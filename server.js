@@ -23,6 +23,22 @@ app.post('/voice', (req, res) => {
     res.type('text/xml');
     res.send(response.toString());
 });
+app.get('/voice', (req, res) => {
+    const response = new VoiceResponse();
+    const gather = response.gather({
+        input: 'dtmf',
+        numDigits: 1,
+        action: '/handle-key'
+    });
+
+    gather.say("Hi! This is a test interview call. " +
+               "Press 1 for 10 A M, 2 for 2 P M, or 3 for 6 P M.");
+
+    response.redirect('/voice');
+
+    res.type('text/xml');
+    res.send(response.toString());
+});
 
 // === [2] DTMF Key Handler ===
 app.post('/handle-key', (req, res) => {
