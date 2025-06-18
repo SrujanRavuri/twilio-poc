@@ -15,8 +15,8 @@ app.post('/voice', (req, res) => {
         action: '/handle-key'
     });
 
-    gather.say("Hi! This is a test interview call. " +
-               "Press 1 for 10 A M, 2 for 2 P M, or 3 for 6 P M.");
+    gather.say("Hello, this is a test call. You’re receiving this call from Perficient regarding your upcoming interview. I’ll now share three available time slots — please listen carefully and press the number that matches your preferred slot." +
+               "Press 1 for 10 A M slot, 2 for 2 P M slot, or 3 for 6 P M slot.");
 
     response.redirect('/voice'); // Repeat if no input
 
